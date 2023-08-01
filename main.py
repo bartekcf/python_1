@@ -4,7 +4,7 @@ import requests as req
 import sql
 from article import Article
 
-api_key = '01bf04300c0a4818b8d036c4d13ea876'
+api_key = '************************'
 api_url = 'https://newsapi.org/v2/everything'
 
 # requests.get(url, params={key: value}, args)
