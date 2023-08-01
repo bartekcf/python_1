@@ -10,3 +10,29 @@ def add_to_database(author_p, title_p, description_p, url_p, urlToImage_p, publi
     )
     connection.commit()  # Zatwierdź transakcję
     connection.close()  # Zamknij połączenie
+
+
+# def get_api_data():
+#     connection = sql.connect('article.db')
+#     cursor = connection.cursor()
+#     cursor.execute("SELECT * FROM api_data")
+#     results = cursor.fetchall()
+#     connection.close()
+#
+#     return results
+
+
+def get_api_data():
+    connection = sql.connect('article.db')
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM api_data")
+
+    # Pobierz nazwy kolumn
+    column_names = [description[0] for description in cursor.description]
+
+    # Utwórz listę słowników dla wyników zapytania
+    results = [dict(zip(column_names, row)) for row in cursor.fetchall()]
+
+    connection.close()  # Zamknij połączenie
+
+    return results

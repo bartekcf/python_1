@@ -4,8 +4,10 @@ import requests as req
 import sql
 from article import Article
 
-api_key = '************************'
-api_url = 'https://newsapi.org/v2/everything'
+
+api_data = sql.get_api_data()
+api_key = api_data[0]['api_key']
+api_url = api_data[0]['api_url']
 
 # requests.get(url, params={key: value}, args)
 request = req.get(api_url, params={'q': 'tesla', 'apiKey': api_key})
